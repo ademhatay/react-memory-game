@@ -11,6 +11,10 @@ import c9 from "../assets/img/characters/character-9.png"
 import c10 from "../assets/img/characters/character-10.png"
 import c11 from "../assets/img/characters/character-11.png"
 import c12 from "../assets/img/characters/character-12.png"
+import c13 from "../assets/img/characters/character-13.png"
+import c14 from "../assets/img/characters/character-14.png"
+import c15 from "../assets/img/characters/character-15.png"
+import c16 from "../assets/img/characters/character-16.png"
 
 const Context = createContext();
 
@@ -35,6 +39,10 @@ const GameProvider = ({ children }) => {
 		{"src": c10},
 		{"src": c11},
 		{"src": c12},
+		{"src": c13},
+		{"src": c14},
+		{"src": c15},
+		{"src": c16}
 	];
 
 	const handleChoice = (card) => {
@@ -93,6 +101,21 @@ const GameProvider = ({ children }) => {
 	}
 
 
+
+	const shuffleCardsHard = () => {
+		const shuffledCardsHard = [...characters, ...characters]
+			.sort(() => Math.random() - 0.5)
+			.map((card) => ({...card, id: Math.random() }))
+
+		setChoiceOne(null);
+		setChoiceTwo(null);
+		setCards(shuffledCardsHard);
+		setTurns(0);
+	}
+
+
+
+
 	const GameData = {
 		cards,
 		setCards,
@@ -108,7 +131,8 @@ const GameProvider = ({ children }) => {
 		handleChoice,
 		resetTurn,
 		shuffleCardsEasy,
-		shuffleCardsMedium
+		shuffleCardsMedium,
+		shuffleCardsHard
 	}
 
 	return (

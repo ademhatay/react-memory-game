@@ -6,7 +6,7 @@ const Settings = () => {
 
 	const data = useSettings();
 	const gameData = useGame();
-	const {shuffleCardsEasy, shuffleCardsMedium} = gameData;
+	const {shuffleCardsEasy, shuffleCardsMedium, shuffleCardsHard } = gameData;
 
 	const startGame = (level) => {
 		if (level === 'easy') {
@@ -14,6 +14,8 @@ const Settings = () => {
 		}
 		else if (level === 'normal') {
 			shuffleCardsMedium();
+		} else if (level === 'hard') {
+			shuffleCardsHard();
 		}
 	}
 	return <>
@@ -28,7 +30,7 @@ const Settings = () => {
 					value={data.level}
 					onChange={(e) => data.setLevel(e.target.value)}
 				>
-					<MenuItem value="easy">Easy (3x3)</MenuItem>
+					<MenuItem value="easy">Easy (2x2)</MenuItem>
 					<MenuItem value="normal">Normal (4x4)</MenuItem>
 					<MenuItem value="hard">Hard (6x6)</MenuItem>
 				</Select>
@@ -36,7 +38,7 @@ const Settings = () => {
 			<br />
 			<Button
 				onClick={() => startGame(data.level)}
-				variant="contained" className="my-3 w-50 md-w-75">Start Game</Button>
+				variant="contained" className="my-3 w-50 md-w-75">Shuffle Cards</Button>
 		</Paper>
 	</>
 }

@@ -19,7 +19,19 @@
     grid-gap: 20px;
 }
 
+.card-grid6x6 {
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr  1fr 1fr 1fr;
+    grid-gap: 20px;
+}
+
 .card-grid4x4 > img {
+    max-width: 100px;
+    width: 100%;
+}
+
+.card-grid6x6 > img, .card-grid6x6 .front {
     max-width: 100px;
     width: 100%;
 }
@@ -60,5 +72,23 @@
 @media (max-width: 768px) {
     .md-w-75 {
         width: 75%!important;
+    }
+
+    .card-grid4x4 {
+        max-width: 350px;
+    }
+
+    .card-grid4x4 .back, .card-grid4x4 .front {
+        max-width: 50px;
+        width: 100%;
+    }
+
+    .card-grid6x6 {
+        max-width: 350px;
+    }
+
+    .card-grid6x6 .back, .card-grid6x6 .front {
+        max-width: 50px;
+        width: 100%;
     }
 }

@@ -5,7 +5,6 @@ import { useGame } from '../context/GameContext';
 import Easy from './levels/Easy';
 import Medium from './levels/Normal';
 import Hard from './levels/Hard';
-import VeryHard from './levels/VeryHard';
 
 const Game = () => {
 
