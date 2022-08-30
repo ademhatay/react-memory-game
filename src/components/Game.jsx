@@ -13,47 +13,34 @@ const Game = () => {
 	const data = useSettings();
 	const gameData = useGame();
 	const { level, imageGroup } = data;
-	const { cards, setChoiceOne, setChoiceTwo, setCards, setTurns, starwars } = gameData;
-
+	const { cards, setChoiceOne, setChoiceTwo, setCards, setTurns, characters,
+		shuffleCardsEasy, shuffleCardsMedium, shuffleCardsHard, shuffleCardsVeryHard } = gameData;
 
 
 	const easy = level === 'easy';
-	const easyCards = starwars.slice(0, 3);
+	const easyCards =  imageGroup.slice(0, 3);
 
 
 	const medium = level === 'normal';
-	const normalCards = starwars.slice(0, 4);
-  	
+	const normalCards = characters.slice(0, 4);
+
 	const hard = level === 'hard';
-	const hardCards = starwars.slice(0, 5);
+	const hardCards = characters.slice(0, 5);
 
 	const veryHard = (level === 'veryHard');
-	const veryHardCards = starwars.slice(0, 6);
+	const veryHardCards = characters.slice(0, 6);
 
 
 	const shuffleCards = () => {
-		
+
 		// shuffle the card level. 3x3, 4x4, 5x5, 6x6
 		if (easy) {
-			const shuffleEasyCards = [...easyCards, ...easyCards]
-				.sort(() => Math.random() - 0.5)
-				.map((card) => ({...card, id: Math.random() }))
-			setCards(shuffleEasyCards);
+			shuffleCardsEasy();
 		} else if (medium) {
-			
-			const shuffleEasyCards = [...normalCards, ...normalCards]
-				.sort(() => Math.random() - 0.5)
-				.map((card) => ({...card, id: Math.random() }))
-			setCards(shuffleEasyCards);
+			shuffleCardsMedium();
 		} else if (hard) {
-			
+
 			const shuffleEasyCards = [...hardCards, ...hardCards]
-				.sort(() => Math.random() - 0.5)
-				.map((card) => ({...card, id: Math.random() }))
-			setCards(shuffleEasyCards);
-		} else if (veryHard) {
-			
-			const shuffleEasyCards = [...veryHardCards, ...veryHardCards]
 				.sort(() => Math.random() - 0.5)
 				.map((card) => ({...card, id: Math.random() }))
 			setCards(shuffleEasyCards);
@@ -70,7 +57,7 @@ const Game = () => {
 
 	return <>
 			{
-				easy ? <Easy /> : medium ? <Medium /> : hard ? <Hard /> : veryHard ? <VeryHard /> : null
+				easy ? <Easy /> : medium ? <Medium /> : hard ? <Hard /> : null
 			}
 	</>
 }

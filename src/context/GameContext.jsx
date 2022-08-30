@@ -22,7 +22,7 @@ const GameProvider = ({ children }) => {
 	const [choiceTwo, setChoiceTwo] = useState(null);
 	const [disabled, setDisabled] = useState(false);
 
-	const starwars = [
+	const characters = [
 		{"src": c1},
 		{"src": c2},
 		{"src": c3},
@@ -54,8 +54,8 @@ const GameProvider = ({ children }) => {
 
 
 
-	const n = 3;
-	const easyCards = starwars
+	const n = 2;
+	const easyCards = characters
 		.map(x => ({x, r: Math.random()}))
 		.sort((a, b) => a.r - b.r)
 		.map(a => a.x)
@@ -73,6 +73,25 @@ const GameProvider = ({ children }) => {
 		setTurns(0);
 	}
 
+	const normal = 8;
+	const mediumCards = characters
+		.map(x => ({x, r: Math.random()}))
+		.sort((a, b) => a.r - b.r)
+		.map(a => a.x)
+		.slice(0, normal);
+
+	const shuffleCardsMedium = () => {
+		// shuffle the card level. 3x3, 4x4, 5x5, 6x6
+
+		const shuffleCardsMedium = [...mediumCards, ...mediumCards]
+			.sort(() => Math.random() - 0.5)
+			.map((card) => ({...card, id: Math.random()}))
+		setCards(shuffleCardsMedium);
+		setChoiceOne(null);
+		setChoiceTwo(null);
+		setTurns(0);
+	}
+
 
 	const GameData = {
 		cards,
@@ -85,10 +104,11 @@ const GameProvider = ({ children }) => {
 		setChoiceTwo,
 		disabled,
 		setDisabled,
-		starwars,
+		characters,
 		handleChoice,
 		resetTurn,
-		shuffleCardsEasy
+		shuffleCardsEasy,
+		shuffleCardsMedium
 	}
 
 	return (

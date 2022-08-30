@@ -6,11 +6,14 @@ const Settings = () => {
 
 	const data = useSettings();
 	const gameData = useGame();
-	const {shuffleCardsEasy} = gameData;
+	const {shuffleCardsEasy, shuffleCardsMedium} = gameData;
 
 	const startGame = (level) => {
 		if (level === 'easy') {
 			shuffleCardsEasy();
+		}
+		else if (level === 'normal') {
+			shuffleCardsMedium();
 		}
 	}
 	return <>
@@ -27,24 +30,7 @@ const Settings = () => {
 				>
 					<MenuItem value="easy">Easy (3x3)</MenuItem>
 					<MenuItem value="normal">Normal (4x4)</MenuItem>
-					<MenuItem value="hard">Hard (5x5)</MenuItem>
-					<MenuItem value="veryHard">Very Hard (6x6)</MenuItem>
-				</Select>
-			</FormControl>
-			<br />
-			<FormControl className="w-50 md-w-75">
-				<InputLabel id="select-image-group-label">Select Image Group</InputLabel>
-				<Select
-					labelId="select-image-group-label"
-					id="select-image-group"
-					label="Select Image Group"
-					value={data.imageGroup}
-					onChange={(e) => data.setImageGroup(e.target.value)}
-				>
-					<MenuItem value="characters">Characters</MenuItem>
-					<MenuItem value="footballClubs">Football Clubs</MenuItem>
-					<MenuItem value="foods">Foods</MenuItem>
-					<MenuItem value="software">Software</MenuItem>
+					<MenuItem value="hard">Hard (6x6)</MenuItem>
 				</Select>
 			</FormControl>
 			<br />
