@@ -1,5 +1,16 @@
 import { createContext, useContext, useState } from "react";
-
+import c1 from "../assets/img/characters/character-1.png"
+import c2 from "../assets/img/characters/character-2.png"
+import c3 from "../assets/img/characters/character-3.png"
+import c4 from "../assets/img/characters/character-4.png"
+import c5 from "../assets/img/characters/character-5.png"
+import c6 from "../assets/img/characters/character-6.png"
+import c7 from "../assets/img/characters/character-7.png"
+import c8 from "../assets/img/characters/character-8.png"
+import c9 from "../assets/img/characters/character-9.png"
+import c10 from "../assets/img/characters/character-10.png"
+import c11 from "../assets/img/characters/character-11.png"
+import c12 from "../assets/img/characters/character-12.png"
 
 const Context = createContext();
 
@@ -12,18 +23,18 @@ const GameProvider = ({ children }) => {
 	const [disabled, setDisabled] = useState(false);
 
 	const starwars = [
-		{"src": "src/assets/img/characters/character-1.png"},
-		{"src": "src/assets/img/characters/character-2.png"},
-		{"src": "src/assets/img/characters/character-3.png"},
-		{"src": "src/assets/img/characters/character-4.png"},
-		{"src": "src/assets/img/characters/character-5.png"},
-		{"src": "src/assets/img/characters/character-6.png"},
-		{"src": "src/assets/img/characters/character-7.png"},
-		{"src": "src/assets/img/characters/character-8.png"},
-		{"src": "src/assets/img/characters/character-9.png"},
-		{"src": "src/assets/img/characters/character-10.png"},
-		{"src": "src/assets/img/characters/character-11.png"},
-		{"src": "src/assets/img/characters/character-12.png"},
+		{"src": c1},
+		{"src": c2},
+		{"src": c3},
+		{"src": c4},
+		{"src": c5},
+		{"src": c6},
+		{"src": c7},
+		{"src": c8},
+		{"src": c9},
+		{"src": c10},
+		{"src": c11},
+		{"src": c12},
 	];
 
 	const handleChoice = (card) => {
