@@ -1,10 +1,18 @@
 import React, { useContext } from 'react'
 import { Button, FormControl, InputLabel, MenuItem, Paper, Select } from "@mui/material";
 import { useSettings } from '../context/SettingsContext';
-
+import { useGame } from '../context/GameContext';
 const Settings = () => {
 
 	const data = useSettings();
+	const gameData = useGame();
+	const {shuffleCardsEasy} = gameData;
+
+	const startGame = (level) => {
+		if (level === 'easy') {
+			shuffleCardsEasy();
+		}
+	}
 	return <>
 		<Paper className="p-3"  >
 			<h3 className="mb-3">Game Settings</h3>
@@ -40,7 +48,9 @@ const Settings = () => {
 				</Select>
 			</FormControl>
 			<br />
-			<Button variant="contained" className="my-3 w-50 md-w-75">Start Game</Button>
+			<Button
+				onClick={() => startGame(data.level)}
+				variant="contained" className="my-3 w-50 md-w-75">Start Game</Button>
 		</Paper>
 	</>
 }

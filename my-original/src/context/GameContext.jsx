@@ -40,6 +40,29 @@ const GameProvider = ({ children }) => {
     }
 
 
+
+
+
+	const n = 3;
+	const easyCards = starwars
+		.map(x => ({x, r: Math.random()}))
+		.sort((a, b) => a.r - b.r)
+		.map(a => a.x)
+		.slice(0, n);
+
+	const shuffleCardsEasy = () => {
+		// shuffle the card level. 3x3, 4x4, 5x5, 6x6
+
+		const shuffleEasyCards = [...easyCards, ...easyCards]
+			.sort(() => Math.random() - 0.5)
+			.map((card) => ({...card, id: Math.random()}))
+		setCards(shuffleEasyCards);
+		setChoiceOne(null);
+		setChoiceTwo(null);
+		setTurns(0);
+	}
+
+
 	const GameData = {
 		cards,
 		setCards,
@@ -54,6 +77,7 @@ const GameProvider = ({ children }) => {
 		starwars,
 		handleChoice,
 		resetTurn,
+		shuffleCardsEasy
 	}
 
 	return (
