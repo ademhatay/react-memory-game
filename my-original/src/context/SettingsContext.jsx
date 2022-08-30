@@ -5,7 +5,7 @@ const Context = createContext();
 const Provider = ({ children }) => {
 
 	const [level, setLevel] = useState('easy');
-	const [imageGroup, setImageGroup] = useState('starwars');
+	const [imageGroup, setImageGroup] = useState('characters');
 
 	const settingsData = {
 		level,

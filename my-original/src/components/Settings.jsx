@@ -33,7 +33,7 @@ const Settings = () => {
 					value={data.imageGroup}
 					onChange={(e) => data.setImageGroup(e.target.value)}
 				>
-					<MenuItem value="starwars">Starwars</MenuItem>
+					<MenuItem value="characters">Characters</MenuItem>
 					<MenuItem value="footballClubs">Football Clubs</MenuItem>
 					<MenuItem value="foods">Foods</MenuItem>
 					<MenuItem value="software">Software</MenuItem>
