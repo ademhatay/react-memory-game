@@ -69,11 +69,9 @@ const Game = () => {
     }, [])
 
 	return <>
-		<div className="card-grid">
 			{
 				easy ? <Easy /> : medium ? <Medium /> : hard ? <Hard /> : veryHard ? <VeryHard /> : null
 			}
-		</div>
 	</>
 }
 

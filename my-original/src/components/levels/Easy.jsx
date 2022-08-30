@@ -1,38 +1,53 @@
-import React, { useEffect } from 'react'
-import { useGame } from '../../context/GameContext';
+import React, {useEffect} from 'react'
+import {useGame} from '../../context/GameContext';
+import CoverPng from '../../assets/img/cover.png';
 
 const Easy = () => {
 
-	const gameData = useGame();
-	const { cards, starwars, setCards,choiceOne, choiceTwo, setChoiceOne, setChoiceTwo, setTurns, disabled, handleChoice, flipped, setDisabled, turns, resetTurn} = gameData;
+    const gameData = useGame();
+    const {
+        cards,
+        starwars,
+        setCards,
+        choiceOne,
+        choiceTwo,
+        setChoiceOne,
+        setChoiceTwo,
+        setTurns,
+        disabled,
+        handleChoice,
+        setDisabled,
+        turns,
+        resetTurn
+    } = gameData;
 
 
-	const n = 3;
-	const easyCards = starwars
-		.map(x => ({ x, r: Math.random() }))
-		.sort((a, b) => a.r - b.r)
-		.map(a => a.x)
-		.slice(0, n);
+    const n = 3;
+    const easyCards = starwars
+        .map(x => ({x, r: Math.random()}))
+        .sort((a, b) => a.r - b.r)
+        .map(a => a.x)
+        .slice(0, n);
 
-	const shuffleCards = () => {
+    const shuffleCards = () => {
 
-		// shuffle the card level. 3x3, 4x4, 5x5, 6x6
+        // shuffle the card level. 3x3, 4x4, 5x5, 6x6
 
-		const shuffleEasyCards = [...easyCards, ...easyCards]
-			.sort(() => Math.random() - 0.5)
-			.map((card) => ({ ...card, id: Math.random() }))
-		setCards(shuffleEasyCards);
-		setChoiceOne(null);
-		setChoiceTwo(null);
-		setTurns(0);
-	}
+        const shuffleEasyCards = [...easyCards, ...easyCards]
+            .sort(() => Math.random() - 0.5)
+            .map((card) => ({...card, id: Math.random()}))
+        setCards(shuffleEasyCards);
+        setChoiceOne(null);
+        setChoiceTwo(null);
+        setTurns(0);
+    }
 
 
-	useEffect(() => {
-		shuffleCards();
-	}, [])
+    useEffect(() => {
+        shuffleCards();
+    }, [])
 
-	useEffect(() => {
+    useEffect(() => {
         if (choiceOne && choiceTwo) {
             setDisabled(true);
             if (choiceOne.src === choiceTwo.src) {
@@ -53,27 +68,33 @@ const Easy = () => {
         }
     }, [choiceOne, choiceTwo]);
 
-	const handleClick = (card) => {
+    const handleClick = (card) => {
         if (!disabled) {
             handleChoice(card);
         }
+
+
     }
 
-	return <>
 
-		{cards.map((card, index) => (
-			<div key={index} className="card">
-				<div className={card.matched ? "flipped" : ""}>
-					<img className="front" src={card.src} alt={card.name} />
-					<img className="back" src='img/cover.png'
-						onClick={() => handleClick(card)}
-					/>
-				</div>
-			</div>
-		))}
-		<br />
-		turns: {turns}
-	</>
+    return <>
+
+        <div className="card-grid3x3">
+            {cards.map((card, index) => (
+                <div key={index} className="card">
+                    <div className={card === choiceOne || card === choiceTwo || card.matched  ? "flipped" : ""}>
+                        <img className="front mx-auto" src={card.src} alt="front"/>
+                        <img className="back" src={CoverPng} alt="cover"
+                             onClick={() => handleClick(card)}
+                        />
+                    </div>
+                </div>
+
+            ))}
+        </div>
+        <br/>
+        turns: {turns}
+    </>
 }
 
 export default Easy

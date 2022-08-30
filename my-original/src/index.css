@@ -5,10 +5,10 @@
 }
 
 
-.card-grid {
+.card-grid3x3 {
 	margin-top: 40px;
 	display: grid;
-	grid-template-columns: 1fr 1fr 1fr 1fr;
+	grid-template-columns: 1fr 1fr 1fr;
 	grid-gap: 20px;
   }
   
@@ -16,7 +16,7 @@
 	position: relative;
   }
   
-  .card img {
+  .card > img {
 	max-width: 150px;
 	width: 100%;
 	display: block;
