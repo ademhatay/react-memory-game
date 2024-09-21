@@ -9,7 +9,9 @@
     "preview": "vite preview",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "fix": "lint-staged",
+    "format": "prettier --write ."
   },
   "dependencies": {
     "@emotion/react": "^11.10.0",
